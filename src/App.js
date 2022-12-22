@@ -3,7 +3,7 @@ import {Navbar} from "./components/Navbar";
 import { ShopContextProvider } from "./context/shop-context";
 import {Cart} from "./pages/cart/cart";
 import {Shop} from "./pages/shop/shop";
-import { Desc } from "./pages/shop/desc";
+import { Wishlist } from "./pages/wishlist/wishlist";
 import "./App.css"
 
 
@@ -16,8 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element = {<Shop/>}/>
           <Route path="/cart" element={<Cart/>} />
-
-          <Route path="/desc" element={<Desc/>} />
+          <Route path="/wishlist" element={<Wishlist/>} />
         </Routes>
           
       </Router>

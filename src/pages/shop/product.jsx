@@ -1,31 +1,43 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/shop-context";
 export const Product = (props) => {
-  const { id, title, price, image, description } = props.Data;
+  const { id, title, price, image, description, rating} = props.Data;
 
-  const { addToCart, cartItems } = useContext(ShopContext);
+  const { addToCart, cartItems,addToWishList ,wish} = useContext(ShopContext);
 
   const cartItemAmount = cartItems[id];
+  const wishItem = wish[id];
 
   return (
     <div className="my-3">
       <div
         className="card shadow-sm p-3 mb-5 bg-body rounded"
-        style={{ width: "100%", height: "450px" }}
+        style={{  height: "500px" }}
       >
         <img src={image} className="card-img-top" height="200px" alt="..." />
         <div className="card-body">
-          <div style={{ height: "150px" }}>
+          {/* <div style={{ height: "150px" }}> */}
             <h5 className="card-title">{title}</h5>
-            <p className="card-text">${price}</p>
-          </div>
-          {/* <a href="#" className="btn btn-primary">Buy</a> */}
+            <p>${price}</p>
+            <p>Rating: {rating.rate}/5<span>({rating.count})</span></p>
+
+          {/* </div> */}
+
           <button
-            className="btn btn-outline-dark"
+            className="btn btn-outline-dark btn-sm"
             onClick={() => addToCart(id)}
           >
             Add to Cart{cartItemAmount > 0 && <>({cartItemAmount})</>}
           </button>
+
+          <button
+            className="btn btn-outline-dark my-3 btn-sm mx-2"
+            onClick={() => addToWishList(id)}
+          >
+            {wishItem===false ? <>Add to Wishlist</> : <>Remove from Wishlist</>}
+          </button>
+
         </div>
       </div>
     </div>

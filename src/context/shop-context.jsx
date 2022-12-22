@@ -10,8 +10,19 @@ const getDefaultCart = () => {
   return cart;
 };
 
+const getDefaultWish = () =>{
+  let Wlist = {};
+  for (let i = 1; i < 21; i++) {
+    Wlist[i] = false;
+  }
+  return Wlist;
+}
+
+
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
+
+  const [wish , setWish] = useState(getDefaultWish());
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -40,7 +51,11 @@ export const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
-  const contextValue = { cartItems, addToCart, removeFromCart,data,totAmount};
+  const addToWishList = (itemId) =>{
+    setWish((prev) => ({...prev , [itemId]: !prev[itemId]}));
+  }
+
+  const contextValue = { cartItems, addToCart, removeFromCart,data,totAmount,addToWishList,wish};
 
   // console.log(cartItems)
   return (
