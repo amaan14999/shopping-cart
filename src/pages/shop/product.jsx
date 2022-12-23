@@ -20,8 +20,10 @@ export const Product = (props) => {
           {/* <div style={{ height: "150px" }}> */}
             <h5 className="card-title">{title}</h5>
             <p>${price}</p>
-            <p>Rating: {rating.rate}/5<span>({rating.count})</span></p>
-
+            <div>
+            <Link to={`/product/${id}`}> know more </Link>
+            </div>
+            
           {/* </div> */}
 
           <button
