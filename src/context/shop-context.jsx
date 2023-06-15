@@ -1,4 +1,4 @@
-import React, { createContext, useState ,useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const ShopContext = createContext(null);
 
@@ -10,19 +10,18 @@ const getDefaultCart = () => {
   return cart;
 };
 
-const getDefaultWish = () =>{
+const getDefaultWish = () => {
   let Wlist = {};
   for (let i = 1; i < 21; i++) {
     Wlist[i] = false;
   }
   return Wlist;
-}
-
+};
 
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
-  const [wish , setWish] = useState(getDefaultWish());
+  const [wish, setWish] = useState(getDefaultWish());
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -31,17 +30,16 @@ export const ShopContextProvider = (props) => {
       .then((data) => setData(data));
   }, []);
 
-  const totAmount = ()=>{
+  const totAmount = () => {
     let tot = 0;
-    for(const item in cartItems){
-      if(cartItems[item]>0){
-        let itemInfo = data.find((product)=>product.id===Number(item));
-        tot += cartItems[item] * itemInfo.price
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = data.find((product) => product.id === Number(item));
+        tot += cartItems[item] * itemInfo.price;
       }
     }
     return tot;
-  }
-  
+  };
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -51,13 +49,20 @@ export const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
-  const addToWishList = (itemId) =>{
-    setWish((prev) => ({...prev , [itemId]: !prev[itemId]}));
-  }
+  const addToWishList = (itemId) => {
+    setWish((prev) => ({ ...prev, [itemId]: !prev[itemId] }));
+  };
 
-  const contextValue = { cartItems, addToCart, removeFromCart,data,totAmount,addToWishList,wish};
+  const contextValue = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    data,
+    totAmount,
+    addToWishList,
+    wish,
+  };
 
-  // console.log(cartItems)
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

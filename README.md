@@ -1,15 +1,18 @@
-**Ecommerce Website**
+### Shopping Cart Assignment
 
-This is an ecommerce website built using ReactJS. The website allows users to browse  products, add products to a shopping cart, and add products in wishList.
+This repository contains the code for a shopping cart assignment implemented using React. It is part of the internship assignment.
 
-*Features*
+#### Features
 
-1)Browse products
+- Display a list of products with their details such as name, price, and image.
+- Allow users to add products to the shopping cart.
+- Calculate the total price of the items in the cart.
+- Enable users to remove items from the cart.
+- Update the quantity of items in the cart.
+- Implement responsive design for a seamless user experience on different devices.
 
-2)Add products to a shopping cart
+#### Technologies Used
 
-3)Add products in WishList.
-
-4)View and modify the contents of the shopping cart
-
-5)View and modify the contents of the WishList
+- React: JavaScript library for building user interfaces.
+- HTML: Markup language for structuring the web pages.
+- CSS: Styling language for designing the user interface.

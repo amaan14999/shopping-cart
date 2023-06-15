@@ -11,11 +11,10 @@ export const SingleItem = () => {
     <div className="container-sm my-5">
       <div className="card mb-3">
         <div className="row g-0">
-          <div className="col-md-4" >
+          <div className="col-md-4 p-4">
             <img
               src={data[productId - 1].image}
               className="img-fluid rounded-start"
-              
               alt="..."
             />
           </div>

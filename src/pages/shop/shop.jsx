@@ -1,9 +1,9 @@
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import { Product } from "./product";
-import {ShopContext} from '../../context/shop-context';
+import { ShopContext } from "../../context/shop-context";
 
 export const Shop = () => {
-  const{ data} =useContext(ShopContext)
+  const { data } = useContext(ShopContext);
 
   return (
     <div>
@@ -11,11 +11,9 @@ export const Shop = () => {
         <div className="container-sm my-3">
           <div className="row">
             {data.map((item) => (
-              //   <div key={item.id}>{item.title} {item.price}</div>
               <div className="col-md-4 col-sm-6">
                 <Product Data={item} />
               </div>
-              
             ))}
           </div>
         </div>
